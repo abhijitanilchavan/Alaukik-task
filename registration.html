@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    input{
+        width: 400px;
+        height: 30px;
+        border-radius: 5px;
+        border: 2px,solid,skyblue;
+        font-size: 20px;
+    }
+    span{
+        color: red;
+        font-size: 18px;
+    }
+    </style>
+    <script>
+        function validation(){
+            var username=document.getElementById('username').value;
+            var pass=document.getElementById('pass').value;
+            var conpass=document.getElementById('conpass').value;
+            var mobile=document.getElementById('mobile').value;
+            var mail=document.getElementById('mail').value;
+            if(username==""){
+                document.getElementById('userr').innerHTML="please fill your username";
+            }
+                if(username.length<2){
+                    document.getElementById('userr').innerHTML="please write more than one character";
+                    return false;
+                } else{
+                    document.getElementById('userr').innerHTML="";
+                } 
+            
+             if(pass==""){
+                document.getElementById('passs').innerHTML="please fill your password";
+                return false;
+            }
+            if(pass.length<8){
+                document.getElementById('passs').innerHTML="create password Atleast 8 character";
+                return false;
+            }if(pass.search(/[0-9]/)==-1){
+                document.getElementById('passs').innerHTML="Atleast one Number ";
+                return false;
+            }if(pass.search(/[A-Z]/)==-1){
+                document.getElementById('passs').innerHTML="Atleast Uppercase";
+                return false;
+            }if(pass.search(/[a-z]/)==-1){
+                document.getElementById('passs').innerHTML="Atleast one Lowercase";
+                return false;
+            }if(pass.search(/[!/@/./%/&/*/(/)/]/)==-1){
+                document.getElementById('passs').innerHTML="Atleast one Lowercase";
+                return false;
+            }
+            else{
+                document.getElementById('passs').innerHTML="";
+            }
+
+
+            if(conpass!=pass){
+                document.getElementById('conpasss').innerHTML="password Not matches";
+                return false;
+            }else{
+                document.getElementById('conpasss').innerHTML="";
+            }
+
+
+            if(mobile==""){
+                document.getElementById('mobilee').innerHTML="please fill your umobile";
+            }if(isNaN(mobile)){
+                document.getElementById('mobilee').innerHTML="Please Enter Only Digits";
+                return false; 
+            }
+            if(mobile.length<10 || mobile.length>10){
+                document.getElementById('mobilee').innerHTML="Number Is invalid";
+                return false;
+            }else{
+               document.getElementById('mobilee').innerHTML=""; 
+            }
+
+
+            if(mail.indexOf('@')<=0){
+                document.getElementById('maill').innerHTML="Invalid mail";
+                return false;
+            }
+            if(mail.charAt(mail.length-4)!='.'){
+                 document.getElementById('maill').innerHTML="Invalid mail";
+                 return false;
+            }else{
+                document.getElementById('maill').innerHTML="";
+            }
+        }
+    </script>
+</head>
+<body>
+   
+        <form action="login.html" autocomplete="off" onsubmit="return validation()">
+            <table  cellspacing="15" align="center">
+            <tr><td><input type="text" id="username" placeholder="username"><br>
+            <span id="userr"></span>
+            </td> </tr>
+            <tr><td><input type="password"id="pass" placeholder="password"><br>
+            <span id="passs"></span>
+            </td></tr>
+            <tr><td><input type="password" id="conpass" placeholder="confirm password"><br>
+            <span id="conpasss"></span>
+            </td></tr>
+            <tr><td><input type="text" id="mobile" placeholder="mob number"><br>
+            <span id="mobilee"></span>
+            </td></tr>
+            <tr><td><input type="text" id="mail" placeholder="mailss"><br>
+            <span id="maill"></span>
+            </td></tr>
+            <tr><td><input type="submit" value="submit"></td></tr>
+            </table>  
+        </form>
+     
+    
+</body>
+</html>
